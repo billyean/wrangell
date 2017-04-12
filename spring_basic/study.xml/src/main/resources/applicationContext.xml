@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean name="customerRepository" class="haibo.yan.io.web.repository.HibernateCustomerRepositoryImpl">
+        <property name="dbUsername" value="${dbUsername}"></property>
+    </bean>
+
+    <!-- byName should use same variable name with bean-->
+    <bean name="customerService" class="haibo.yan.io.web.service.CustomerServiceImpl" autowire="byName" scope="prototype">
+    <!-- byName and byType should use set method instead of constructor -->
+    <!--<bean name="customerService" class="haibo.yan.io.web.service.CustomerServiceImpl" autowire="byType">-->
+
+    <!--<bean name="customerService" class="haibo.yan.io.web.service.CustomerServiceImpl" autowire="constructor">-->
+    <!--<bean name="customerService" class="haibo.yan.io.web.service.CustomerServiceImpl">-->
+        <!-- ref should point to bean defined before -->
+        <!--<property name="customerRepository" ref="foo" />-->
+        <!--<constructor-arg index="0" ref="foo"></constructor-arg>-->
+
+    </bean>
+
+    <context:property-placeholder location="app.properties"/>
+</beans>
