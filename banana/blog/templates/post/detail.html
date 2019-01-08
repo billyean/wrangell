@@ -1,0 +1,7 @@
+{%  extends "blog/../blog/../base.html" %}
+
+{% block title %}Block Detail{% endblock %}
+
+{% block content %}
+    <p>{{ post.body | truncatewords:30 | linebreaks }}</p>
+{% endblock %}
