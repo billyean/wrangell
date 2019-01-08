@@ -8,4 +8,6 @@
         <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
         <p class="date">Published on {{ post.publish }} by {{ post.author }}</p>
     {% endfor %}
+
+    {% include "post/pagination.html" with page=posts %}
 {% endblock %}
