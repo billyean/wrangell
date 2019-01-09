@@ -1,4 +1,6 @@
 */.idea
 */venv
+*/target
+*/.mvn
 **/*.pyc
 **/migrations
