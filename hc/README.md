@@ -29,7 +29,7 @@ INSTALLED_APPS = [
 
 You can edit your [models.py](blog/models.py) to add your database model. Once you've done creation of model. You need create migration and migrate your model.
 
-```python
+```shell
 $ ./manage.py makemigrations
 $
 $ ./manage.py migrate
