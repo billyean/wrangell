@@ -3,4 +3,7 @@
 */target
 */.mvn
 **/*.pyc
+*/__pycache__
+*/db.sqlite3
+**/.ipynb_checkpoints
 **/migrations
