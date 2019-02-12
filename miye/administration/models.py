@@ -11,7 +11,6 @@ from django.db.models import (
 
 
 # Create your models here.
-
 class Service(models.Model):
     id = AutoField
     name = CharField(max_length=255, unique=True)

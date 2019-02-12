@@ -1,10 +1,31 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Services</title>
 </head>
 <body>
+    <table>
+        <caption>Services</caption>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Tel</th>
+        </tr>
+        <tbody>
+        {%  for customer in customers %}
+            <tr>
+                <td>{{ customer.first_name }}  {{ customer.last_name }}</td>
+                <td>{{ customer.gender }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.tel }}</td>
+            </tr>
+        {%  endfor %}
+        </tbody>
 
+    </tr>
+    </table>
 </body>
 </html>

@@ -44,3 +44,5 @@ You also can use ```shell_plus --notebook``` to start your django application wi
 ```shell
 $ ./manage.py shell_plus --notebook 
 ```
+
+Here see more detail about [migration](https://docs.djangoproject.com/en/2.1/topics/migrations/)
