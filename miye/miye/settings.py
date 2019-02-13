@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     # miye apps
+    'accounts.apps.AccountsConfig',
     'administration.apps.AdministrationConfig',
     'reservation.apps.ReservationConfig',
 ]

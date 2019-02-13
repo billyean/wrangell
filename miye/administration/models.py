@@ -8,6 +8,7 @@ from django.db.models import (
     EmailField,
     AutoField
 )
+import json
 
 
 # Create your models here.
@@ -17,6 +18,9 @@ class Service(models.Model):
     slug = SlugField(max_length=255)
     time_type = CharField(max_length=255)
     rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5)
+
+    def time_list(self):
+        return json.loads(self.time_type)
 
     def __str__(self):
         return f"name: {self.name}; slug: {self.slug}"

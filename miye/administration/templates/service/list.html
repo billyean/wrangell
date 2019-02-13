@@ -10,17 +10,19 @@
         <caption>Services</caption>
         <tr>
             <th>Name</th>
-            <th>Gender</th>
-            <th>Email</th>
-            <th>Tel</th>
+            <th>Time Selections</th>
+            <th>Rate</th>
         </tr>
         <tbody>
-        {%  for customer in customers %}
+        {%  for service in services %}
             <tr>
-                <td>{{ customer.first_name }}  {{ customer.last_name }}</td>
-                <td>{{ customer.gender }}</td>
-                <td>{{ customer.email }}</td>
-                <td>{{ customer.tel }}</td>
+                <td>{{ service.name }}</td>
+                <td>
+                    {% for t in service.time_list %}
+                        {{ t }} minute&nbsp;
+                    {% endfor %}
+                </td>
+                <td>{{ service.rate }}</td>
             </tr>
         {%  endfor %}
         </tbody>
