@@ -1,6 +1,8 @@
-Reservation System
+## miYe - Massage Reservation System
 
-# Start you local environment
+## Application Preparation
+
+### Start you local environment
 
 ```shell
 # Create a virtual environment and activate it
@@ -10,7 +12,7 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-# Prepare your schema and play with it
+### Prepare your schema and play with it
 
 * Step create your schema
 ```shell
@@ -24,11 +26,15 @@ $ python manage.py shell_plus --notebook
 # This will open a jupyter notebook and you can run it
 ```
 
-# Run dev server
+### Run dev server
 
 ```shell
 ./manage.py runserver
 ```
 
 
-# 
+## Page Overview
+
+### Login/Logout
+
+### Service administration
