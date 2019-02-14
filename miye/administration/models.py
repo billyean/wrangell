@@ -18,6 +18,8 @@ class Service(models.Model):
     slug = SlugField(max_length=255)
     time_type = CharField(max_length=255)
     rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5)
+    create_time = DateTimeField(auto_now_add=True)
+    update_time = DateTimeField(auto_now=True)
 
     def time_list(self):
         return json.loads(self.time_type)

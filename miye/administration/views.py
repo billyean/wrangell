@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from .models import (Service)
-from django.core import serializers
 from django.http import JsonResponse
 
 
@@ -10,20 +9,27 @@ from django.http import JsonResponse
 def service_base(request):
     return render(request, 'service/main.html', None)
 
+
 @login_required
 def service_list(request):
-    data = dict()
+    print(request)
     if request.method == 'GET':
-        services = list(Service.objects.all().values())
+        services = list(Service.objects.all().order_by('create_time').values())
+        data = dict()
         data['services'] = services
+        return JsonResponse(data)
     else:
+        print(request)
         service = Service.objects.create(name=request.POST['name'],
                                          time_type=request.POST['time_type'],
                                          rate=request.POST['rate'])
         service.save()
-        data = dict()
-        data['service'] = service
-    return JsonResponse(data)
+        return JsonResponse({
+            'id': service.id,
+            'name': service.name,
+            'time_type': service.time_type,
+            'rate': service.rate
+        })
 
 
 @login_required
@@ -37,10 +43,14 @@ def service_detail(request, service_id):
         if request.POST['rate'] is not None:
             service.rate = request.POST['rate']
         service.save()
+
+        services = list(Service.objects.all().order_by('create_time').values())
+        data = dict()
+        data['services'] = services
+        return JsonResponse(data)
     elif request.method == 'DELETE':
         service.delete()
 
-    print(f'{service}')
     return JsonResponse({
         'id': service.id,
         'name': service.name,
