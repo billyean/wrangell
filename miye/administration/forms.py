@@ -1,7 +1,7 @@
 from django import forms
 
 
-class AddServiceForm(forms.Form):
+class ServiceForm(forms.Form):
     name = forms.CharField()
     slug = forms.SlugField()
     minutes = forms.CharField()

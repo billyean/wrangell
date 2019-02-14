@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from accounts.forms import LoginForm
-from administration.views import service_list
+from administration.views import service_base
 
 
 # Create your views here.
@@ -17,7 +17,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect(service_list)
+                    return redirect(service_base)
                 else:
                     err = 'Disabled account'
             else:

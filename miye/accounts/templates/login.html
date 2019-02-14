@@ -10,7 +10,7 @@
     {% if errMsg is not None %}
         {{ errMsg }}
     {% endif %}
-    <form action="." method="post">
+    <form action="/login" method="post">
         {{ form.as_p }}
         {% csrf_token %}
         <button type="submit" >Login</button><button type="reset">Clear</button>
