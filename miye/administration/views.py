@@ -12,14 +12,12 @@ def service_base(request):
 
 @login_required
 def service_list(request):
-    print(request)
     if request.method == 'GET':
         services = list(Service.objects.all().order_by('create_time').values())
         data = dict()
         data['services'] = services
         return JsonResponse(data)
     else:
-        print(request)
         service = Service.objects.create(name=request.POST['name'],
                                          time_type=request.POST['time_type'],
                                          rate=request.POST['rate'])

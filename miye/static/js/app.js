@@ -16,6 +16,7 @@ $.ajax({
             </td>
         </tr>`;
     });
+
     $('#myTable tbody').append(rows);
     bindBtn();
     }
