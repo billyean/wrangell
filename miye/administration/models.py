@@ -8,8 +8,6 @@ from django.db.models import (
     AutoField
 )
 from administration.validators import validate_int15_list
-from django.core.validators import DecimalValidator
-import json
 
 
 # Create your models here.
@@ -21,9 +19,6 @@ class Service(models.Model):
     rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5, validators=[DecimalField])
     create_time = DateTimeField(auto_now_add=True)
     update_time = DateTimeField(auto_now=True)
-
-    def time_list(self):
-        return json.loads(self.time_type)
 
     def __str__(self):
         return f"name: {self.name}\n description: {self.description}\n time_type: {self.time_type} rate: {self.rate}"
