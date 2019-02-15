@@ -19,6 +19,7 @@ def service_list(request):
             data['services'] = services
         else:
             service = Service(name=request.POST['name'],
+                              description=request.POST['description'],
                               time_type=request.POST['time_type'],
                               rate=request.POST['rate'])
             service.full_clean()

@@ -58,7 +58,7 @@ function newService(){
                 <label for="name">Name: </label>
                 <input id="form_name" type="text" class="form-control" name="name"><br>
                 <label for="name">Description: </label>
-                <input id="form_description" type="text" class="form-control" name="name"><br>
+                <input id="form_description" type="text" class="form-control" name="description"><br>
                 <label for="time_type">Time Type: </label>
                 <input id="form_time_type" type="text" class="form-control" name="time_type"><br>
                 <label for="rate">Rate:</label>
@@ -104,7 +104,6 @@ function ajaxNewService(service) {
                 $('#serviceform').empty();
                 bindBtn();
             } else {
-                alert(data.message);
                 let errorRow = `<div id="errorDiv" class="alert alert-danger">${data.message}</div>`
                 $('#errorDiv').replaceWith(errorRow)
             }
