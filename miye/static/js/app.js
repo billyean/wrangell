@@ -120,7 +120,6 @@ function updateService(el){
         type:  'get',
         dataType:  'json',
         success:  function (data) {
-            alert(data.ret);
             if (data.ret == 0) {
                 let service = data.service;
                 let form = `<br><br>

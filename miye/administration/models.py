@@ -18,7 +18,7 @@ class Service(models.Model):
     name = CharField(max_length=255, unique=True)
     description = CharField(max_length=255)
     time_type = CharField(max_length=255, validators=[validate_int15_list])
-    rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5, validators=[DecimalValidator])
+    rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5, validators=[DecimalField])
     create_time = DateTimeField(auto_now_add=True)
     update_time = DateTimeField(auto_now=True)
 

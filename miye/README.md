@@ -25,12 +25,17 @@ $ python manage.py shell_plus --notebook
 # This will open a jupyter notebook and you can run it
 ```
 
+### Create a super user for your application
+```shell
+$ python manage.py 
+
+```
+
 ### Run dev server
 
 ```shell
-./manage.py runserver
+./manage.py runserver createsuperuser
 ```
-
 
 ## Page Overview
 
