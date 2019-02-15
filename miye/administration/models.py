@@ -27,7 +27,7 @@ class Service(models.Model):
         return json.loads(self.time_type)
 
     def __str__(self):
-        return f"name: {self.name}; time_type: {self.time_type}; rate: {rate}"
+        return f"name: {self.name}\n description: {self.description}\n time_type: {self.time_type} rate: {self.rate}"
 
 
 class ActiveManager(models.Manager):
