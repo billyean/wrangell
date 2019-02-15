@@ -3,22 +3,26 @@ $.ajax({
     type:  'get',
     dataType:  'json',
     success: function  (data) {
-        let rows =  '';
-        data.services.forEach(service => {
-        rows += `
-        <tr id="tr_${service.id}">
-            <td class="col-1">${service.name}</td>
-            <td class="col-3">${service.time_type}</td>
-            <td class="col-1">${service.rate}</td>
-            <td class="col-3">
-                <button class="btn deleteBtn btn-primary" data-id="${service.id}"">Delete</button>
-                <button class="btn updateBtn btn-primary" data-id="${service.id}"">Update</button>
-            </td>
-        </tr>`;
-    });
+        if (data.ret == 0) {
+            let rows =  '';
+            data.services.forEach(service => {
+                rows += `<tr id="tr_${service.id}">
+                        <td class="col-1">${service.name}</td>
+                        <td class="col-1">${service.description}</td>
+                        <td class="col-3">${service.time_type}</td>
+                        <td class="col-1"><span>&#36;</span>${service.rate}</td>
+                        <td class="col-3">
+                            <button class="btn deleteBtn btn-primary" data-id="${service.id}"">Delete</button>
+                            <button class="btn updateBtn btn-primary" data-id="${service.id}"">Update</button>
+                        </td>
+                    </tr>`;
+            });
 
-    $('#myTable tbody').append(rows);
-    bindBtn();
+            $('#myTable tbody').append(rows);
+            bindBtn();
+        } else {
+            // do something
+        }
     }
 });
 
@@ -50,8 +54,11 @@ function deleteService(el){
 function newService(){
     let form = `<br><br>
            <div>
+                <div id="errorDiv" class="alert alert-danger hidden"></div>
                 <label for="name">Name: </label>
                 <input id="form_name" type="text" class="form-control" name="name"><br>
+                <label for="name">Description: </label>
+                <input id="form_description" type="text" class="form-control" name="name"><br>
                 <label for="time_type">Time Type: </label>
                 <input id="form_time_type" type="text" class="form-control" name="time_type"><br>
                 <label for="rate">Rate:</label>
@@ -62,10 +69,12 @@ function newService(){
     $('#serviceform').append(form);
     $('.submitBtn').bind("click", () => {
         let name = $('#form_name').val();
+        let description = $('#form_description').val();
         let time_type = $('#form_time_type').val();
         let rate = $('#form_rate').val();
         ajaxNewService({
             'name': name,
+            'description': description,
             'time_type': time_type,
             'rate': rate
         })
@@ -79,18 +88,27 @@ function ajaxNewService(service) {
         dataType:  'json',
         data: service,
         success:  function (data) {
-            let row = `<tr id="tr_${data.id}">
-                            <td class="col-1">${data.name}</td>
-                            <td class="col-3">${data.time_type}</td>
-                            <td class="col-1">${data.rate}</td>
-                            <td class="col-3">
-                                <button class="btn deleteBtn btn-primary" data-id="${data.id}"">Delete</button>
-                                <button class="btn updateBtn btn-primary" data-id="${data.id}"">Update</button>
-                            </td>
-                        </tr>`;
-            $('#myTable tbody').append(row);
-            $('#serviceform').empty();
-            bindBtn();
+            if (data.ret == 0) {
+                let service = data.service;
+                let row = `<tr id="tr_${service.id}">
+                                <td class="col-1">${service.name}</td>
+                                <td class="col-1">${service.description}</td>
+                                <td class="col-3">${service.time_type}</td>
+                                <td class="col-1"><span>&#36;</span>${service.rate}</td>
+                                <td class="col-3">
+                                    <button class="btn deleteBtn btn-primary" data-id="${service.id}"">Delete</button>
+                                    <button class="btn updateBtn btn-primary" data-id="${service.id}"">Update</button>
+                                </td>
+                            </tr>`;
+                $('#myTable tbody').append(row);
+                $('#serviceform').empty();
+                bindBtn();
+            } else {
+                alert(data.message);
+                let errorRow = `<div id="errorDiv" class="alert alert-danger">${data.message}</div>`
+                $('#errorDiv').replaceWith(errorRow)
+            }
+
         }
     });
 }
@@ -102,31 +120,40 @@ function updateService(el){
         type:  'get',
         dataType:  'json',
         success:  function (data) {
-            let form = `<br><br>
-                   <div>
-                        <input id="form_id" type="hidden" value="${data.id}">
-                        <label for="name">Name: </label>
-                        <input id="form_name" type="text" class="form-control" name="name" value="${data.name}"><br>
-                        <label for="time_type">Time Type: </label>
-                        <input id="form_time_type" type="text" class="form-control" name="time_type" value="${data.time_type}"><br>
-                        <label for="rate">Rate:</label>
-                        <input id="form_rate" type="text" class="form-control" name="rate" value="${data.rate}"><br>
-                        <button class="btn submitBtn btn-primary">Update</button>&nbsp;<button type="reset" class="btn btn-primary">Clear</button>&nbsp;<button type="reset" class="btn btn-primary" onclick="cancelForm()">Cancel</button>
-                    </div>`;
-            $('#serviceform').empty()
-            $('#serviceform').append(form)
-            $('.submitBtn').bind("click", () => {
-                let id = $('#form_id').val();
-                let name = $('#form_name').val();
-                let time_type = $('#form_time_type').val();
-                let rate = $('#form_rate').val();
-                ajaxUpdateService({
-                    'id': id,
-                    'name': name,
-                    'time_type': time_type,
-                    'rate': rate
-                }, el)
-            });
+            alert(data.ret);
+            if (data.ret == 0) {
+                let service = data.service;
+                let form = `<br><br>
+                       <div>
+                            <div id="errorDiv" class="alert alert-danger hidden"></div>
+                            <input id="form_id" type="hidden" value="${service.id}">
+                            <label for="name">Name: </label>
+                            <input id="form_name" type="text" class="form-control" name="name" value="${service.name}"><br>
+                            <label for="name">Description: </label>
+                            <input id="form_description" type="text" class="form-control" name="name"><br>
+                            <label for="time_type">Time Type: </label>
+                            <input id="form_time_type" type="text" class="form-control" name="time_type" value="${service.time_type}"><br>
+                            <label for="rate">Rate:</label>
+                            <input id="form_rate" type="text" class="form-control" name="rate" value="${service.rate}"><br>
+                            <button class="btn submitBtn btn-primary">Update</button>&nbsp;<button type="reset" class="btn btn-primary">Clear</button>&nbsp;<button type="reset" class="btn btn-primary" onclick="cancelForm()">Cancel</button>
+                        </div>`;
+                $('#serviceform').empty()
+                $('#serviceform').append(form)
+                $('.submitBtn').bind("click", () => {
+                    let id = $('#form_id').val();
+                    let name = $('#form_name').val();
+                    let description = $('#form_description').val();
+                    let time_type = $('#form_time_type').val();
+                    let rate = $('#form_rate').val();
+                    ajaxUpdateService({
+                        'id': id,
+                        'name': name,
+                        'description': description,
+                        'time_type': time_type,
+                        'rate': rate
+                    }, el)
+                });
+            }
         }
     });
 }
@@ -139,23 +166,27 @@ function ajaxUpdateService(service, elm) {
         dataType:  'json',
         data: service,
         success:  function (data) {
-            let rows =  '';
-            data.services.forEach(service => {
-                rows += `
-                <tr id="tr_${service.id}">
+            if (data.ret == 0) {
+                let service = data.service;
+                let updatedRowElement = $('#tr_' + service.id);
+                row = `<tr id="tr_${service.id}">
                     <td class="col-1">${service.name}</td>
+                    <td class="col-1">${service.description}</td>
                     <td class="col-3">${service.time_type}</td>
-                    <td class="col-1">${service.rate}</td>
+                    <td class="col-1"><span>&#36;</span>${service.rate}</td>
                     <td class="col-3">
                         <button class="btn deleteBtn btn-primary" data-id="${service.id}"">Delete</button>
                         <button class="btn updateBtn btn-primary" data-id="${service.id}"">Update</button>
-                    </td>
-                </tr>`;
-            });
-            $('#myTable tbody').empty();
-            $('#myTable tbody').append(rows);
-            $('#serviceform').empty();
-            bindBtn();
+                     </td>
+                    </tr>`;
+                updatedRowElement.replaceWith(row);
+                $('#serviceform').empty();
+                bindBtn();
+            } else {
+                let errorRow = `<div id="errorDiv" class="alert alert-danger">${data.message}</div>`
+                $('#errorDiv').replaceWith(errorRow)
+            }
+
         }
     });
 }

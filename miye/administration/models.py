@@ -8,6 +8,8 @@ from django.db.models import (
     EmailField,
     AutoField
 )
+from administration.validators import validate_int15_list
+from django.core.validators import DecimalValidator
 import json
 
 
@@ -15,9 +17,9 @@ import json
 class Service(models.Model):
     id = AutoField
     name = CharField(max_length=255, unique=True)
-    slug = SlugField(max_length=255)
-    time_type = CharField(max_length=255)
-    rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5)
+    description = CharField(max_length=255)
+    time_type = CharField(max_length=255, validators=[validate_int15_list])
+    rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5, validators=[DecimalField])
     create_time = DateTimeField(auto_now_add=True)
     update_time = DateTimeField(auto_now=True)
 
@@ -25,7 +27,7 @@ class Service(models.Model):
         return json.loads(self.time_type)
 
     def __str__(self):
-        return f"name: {self.name}; slug: {self.slug}"
+        return f"name: {self.name}; time_type: {self.time_type}; rate: {rate}"
 
 
 class ActiveManager(models.Manager):
