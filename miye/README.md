@@ -7,7 +7,6 @@
 ```shell
 # Create a virtual environment and activate it
 $ python3 -m venv ./venv
-$ chmod +x venv/bin/activate # not sure why needs this, but it happens in my local
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
