@@ -129,7 +129,7 @@ function updateService(el){
                             <label for="name">Name: </label>
                             <input id="form_name" type="text" class="form-control" name="name" value="${service.name}"><br>
                             <label for="name">Description: </label>
-                            <input id="form_description" type="text" class="form-control" name="name"><br>
+                            <input id="form_description" type="text" class="form-control" name="description" value="${service.description}"><br>
                             <label for="time_type">Time Type: </label>
                             <input id="form_time_type" type="text" class="form-control" name="time_type" value="${service.time_type}"><br>
                             <label for="rate">Rate:</label>
