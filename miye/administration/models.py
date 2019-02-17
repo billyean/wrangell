@@ -39,7 +39,7 @@ class Customer(models.Model):
     first_name = CharField(max_length=255)
     middle_name = CharField(max_length=255, null=True, blank=True)
     last_name = CharField(max_length=255)
-    gender = CharField(max_length=1, choices=GENDER, default=UNKNOWN)
+    gender = CharField(max_length=7, choices=GENDER, default=UNKNOWN)
     active = BooleanField(default=True)
     tel = CharField(max_length=13, default=True)
     email = EmailField(null=True)
