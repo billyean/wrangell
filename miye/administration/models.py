@@ -30,14 +30,14 @@ class ActiveManager(models.Manager):
 
 
 class Customer(models.Model):
-    MALE = 'M'
-    FEMALE = 'F'
-    UNKNOWN = 'F'
+    MALE = 'Male'
+    FEMALE = 'Female'
+    UNKNOWN = 'Unknown'
 
-    GENDER = ((MALE, 'Male'), (FEMALE, 'Female'), (UNKNOWN, 'Unknown'))
+    GENDER = ((MALE, 'male'), (FEMALE, 'female'), (UNKNOWN, 'unknown'))
     id = AutoField
     first_name = CharField(max_length=255)
-    middle_name = CharField(max_length=255, null=True)
+    middle_name = CharField(max_length=255, null=True, blank=True)
     last_name = CharField(max_length=255)
     gender = CharField(max_length=1, choices=GENDER, default=UNKNOWN)
     active = BooleanField(default=True)

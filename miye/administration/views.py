@@ -4,6 +4,7 @@ from .models import (Service, Customer)
 from django.http import JsonResponse
 from django.core.exceptions import ValidationError
 
+
 # Create your views here.
 @login_required
 def service_base(request):

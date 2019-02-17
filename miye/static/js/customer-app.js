@@ -7,8 +7,7 @@ $.ajax({
             let rows =  '';
             data.customers.forEach(customer => {
                 rows += `<tr id="tr_${customer.id}">
-                        <td class="col-1">${customer.first_name}</td>
-                        <td class="col-1">${customer.last_name}</td>
+                        <td class="col-1">${customer.first_name} ${customer.last_name}</td>
                         <td class="col-3">${customer.gender}</td>
                         <td class="col-1">${customer.email}</td>
                         <td class="col-1">${customer.tel}</td>
@@ -61,7 +60,12 @@ function newCustomer(){
                 <label for="last_name">Last Name: </label>
                 <input id="form_last_name" type="text" class="form-control" name="last_name"><br>
                 <label for="gender">Gender: </label>
-                <input id="form_gender" type="text" class="form-control" name="gender"><br>
+                <select id="form_gender"  class="form-control" name="gender">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Unknown">Unknown</option>
+                </select><br>
+                <!--<input id="form_gender" type="text" class="form-control" name="gender">-->
                 <label for="email">EMail:</label>
                 <input id="form_email" type="text" class="form-control" name="email"><br>
                 <label for="tel">Tel:</label>
@@ -96,8 +100,7 @@ function ajaxNewCustomer(customer) {
             if (data.ret == 0) {
                 let customer = data.customer;
                 let row = `<tr id="tr_${customer.id}">
-                                <td class="col-1">${customer.first_name}</td>
-                                <td class="col-1">${customer.last_name}</td>
+                                <td class="col-1">${customer.first_name} ${customer.last_name}</td>
                                 <td class="col-3">${customer.gender}</td>
                                 <td class="col-1">${customer.email}</td>
                                 <td class="col-1">${customer.tel}</td>
@@ -136,7 +139,11 @@ function updateCustomer(el){
                             <label for="last_name">Last Name: </label>
                             <input id="form_last_name" type="text" class="form-control" name="last_name" value="${customer.last_name}"><br>
                             <label for="gender">Gender: </label>
-                            <input id="form_gender" type="text" class="form-control" name="gender" value="${customer.gender}"><br>
+                            <select id="form_gender"  class="form-control" name="gender">
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Unknown">Unknown</option>
+                            </select><br>
                             <label for="email">Email:</label>
                             <input id="form_email" type="text" class="form-control" name="email" value="${customer.email}"><br>
                             <label for="tel">Tel:</label>
@@ -145,6 +152,7 @@ function updateCustomer(el){
                         </div>`;
                 $('#customerform').empty()
                 $('#customerform').append(form)
+                $('#form_gender select').val('${customer.gender}')
                 $('.submitBtn').bind("click", () => {
                     let id = $('#form_id').val();
                     let first_name = $('#form_first_name').val();
@@ -178,8 +186,7 @@ function ajaxUpdateCustomer(customer, elm) {
                 let customer = data.customer;
                 let updatedRowElement = $('#tr_' + customer.id);
                 row = `<tr id="tr_${customer.id}">
-                    <td class="col-1">${customer.first_name}</td>
-                    <td class="col-1">${customer.last_name}</td>
+                    <td class="col-1">${customer.first_name} ${customer.last_name}</td>
                     <td class="col-3">${customer.gender}</td>
                     <td class="col-1">${customer.email}</td>
                     <td class="col-1">${customer.tel}</td>
