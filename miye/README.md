@@ -42,3 +42,7 @@ $ python manage.py
 ### Login/Logout
 
 ### Service administration
+
+### Customer administration
+
+### Reservation
