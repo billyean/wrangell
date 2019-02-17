@@ -40,9 +40,9 @@ function bindBtn() {
 }
 
 function deleteService(el){
-    serviceId  =  $(el).data('id')
+    customerId  =  $(el).data('id')
     $.ajax({
-        url:  `/service/${serviceId}`,
+        url:  `/service/${customerId}`,
         type:  'delete',
         dataType:  'json',
         success:  function (data) {
@@ -113,9 +113,9 @@ function ajaxNewService(service) {
 }
 
 function updateService(el){
-    serviceId  =  $(el).data('id')
+    customerId  =  $(el).data('id')
     $.ajax({
-        url:  `/service/${serviceId}`,
+        url:  `/service/${customerId}`,
         type:  'get',
         dataType:  'json',
         success:  function (data) {

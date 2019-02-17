@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from .models import (Service)
+from .models import (Service, Customer)
 from django.http import JsonResponse
 from django.core.exceptions import ValidationError
 
@@ -72,3 +72,78 @@ def service_detail(request, service_id):
         data['ret'] = 1
         data['message'] = str(e)
     return JsonResponse(data)
+
+
+@login_required
+def customer_base(request):
+    return render(request, 'customer/main.html', None)
+
+
+@login_required
+def customer_list(request):
+    data = dict()
+    try:
+        if request.method == 'GET':
+            customers = list(Customer.actives.all().values())
+            data['customers'] = customers
+        else:
+            customer = Customer(first_name=request.POST['first_name'],
+                              last_name=request.POST['last_name'],
+                              gender=request.POST['gender'],
+                              email=request.POST['email'],
+                              tel=request.POST['tel'])
+            customer.full_clean()
+            customer.save()
+
+            data['customer'] = {
+                    'id': customer.id,
+                    'first_name': customer.first_name,
+                    'last_name': customer.last_name,
+                    'gender': customer.gender,
+                    'email': customer.email,
+                    'tel': customer.tel
+                }
+        data['ret'] = 0
+    except ValidationError as e:
+        data['ret'] = 1
+        data['message'] = str(e)
+    return JsonResponse(data)
+
+
+@login_required
+def customer_detail(request, customer_id):
+    data = dict()
+    try:
+        customer = Customer.actives.get(id=customer_id)
+
+        if request.method == 'POST':
+            if request.POST['first_name'] is not None:
+                customer.name = request.POST['first_name']
+            if request.POST['last_name'] is not None:
+                customer.description = request.POST['last_name']
+            if request.POST['gender'] is not None:
+                customer.time_type = request.POST['gender']
+            if request.POST['email'] is not None:
+                customer.rate = request.POST['email']
+            if request.POST['tel'] is not None:
+                customer.rate = request.POST['tel']
+            customer.full_clean()
+            customer.save()
+        elif request.method == 'DELETE':
+            customer.delete()
+
+        data['ret'] = 0
+        data['customer'] = {
+                'id': customer.id,
+                'first_name': customer.first_name,
+                'last_name': customer.last_name,
+                'gender': customer.gender,
+                'email': customer.email,
+                'tel': customer.tel
+            }
+        return JsonResponse(data)
+    except ValidationError as e:
+        data['ret'] = 1
+        data['message'] = str(e)
+    return JsonResponse(data)
+
