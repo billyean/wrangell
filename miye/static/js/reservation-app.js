@@ -4,7 +4,7 @@ $.ajax({
     dataType:  'json',
     success: function  (data) {
         if (data.ret == 0) {
-                alert(data.reservations);
+                console.log(data.reservations);
             // let rows =  '';
             // data.customers.forEach(customer => {
             //     rows += `<tr id="tr_${customer.id}">
