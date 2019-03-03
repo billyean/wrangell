@@ -58,8 +58,8 @@ def reservations(request):
     data = dict()
     try:
         if request.method == 'GET':
-            valid_reservations = list(Reservation.valid.values())
-            data['reservation'] = valid_reservations
+            valid_reservations = list(Reservation.objects.values())
+            data['reservations'] = valid_reservations
         else:
             customer = Customer.objects.filter(id == request.POST['customer_id'])
             reservation_service = Service.objects.filter(id == request.POST['service_id'])

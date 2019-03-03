@@ -32,6 +32,7 @@ urlpatterns = [
     path('customer', administration_views.customer_base, name='customer_main'),
     path('customer/list', administration_views.customer_list, name="customer_list"),
     path('customer/<int:customer_id>', administration_views.customer_detail, name="customer_detail"),
+    path('reservations', reservation_views.reservations, name='reservations_main'),
     path('reservation/new', reservation_views.new_reservation, name='new_reservation'),
     path('reservation', reservation_views.reservation, name='reservation_main'),
     path('reservation/calendar/day.html', reservation_views.DayHtml.as_view()),
