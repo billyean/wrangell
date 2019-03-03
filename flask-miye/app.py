@@ -8,9 +8,9 @@ def hello_world():
     return 'Hello World!'
 
 
-# @app.route('/login')
-# def hello_world():
-#    return 'Hello World!'
+@app.route('/hello/<str:name>')
+def hello(name):
+   return f'Hello {name}!'
 
 
 if __name__ == '__main__':
