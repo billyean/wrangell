@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 
 # Create your views here.
 @login_required
-def reservation_base(request):
+def reservation(request):
     return render(request, 'reservation.html', None)
 
 
@@ -46,3 +46,11 @@ class YearHtml(TemplateView):
 
 class YearMonthHtml(TemplateView):
     template_name = "calendar/year-month.html"
+
+@login_required
+def new_reservation(request):
+    return render(request, 'new_reservation.html', None)
+
+@login_required
+def new_reservation(request):
+    return render(request, 'new_reservation.html', None)
