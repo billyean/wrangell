@@ -48,7 +48,7 @@ class YearMonthHtml(TemplateView):
     template_name = "calendar/year-month.html"
 
 @login_required
-def new_reservation(request):
+def reservations(request):
     return render(request, 'new_reservation.html', None)
 
 @login_required
