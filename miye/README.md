@@ -4,12 +4,23 @@
 
 ### Start you local environment
 
-```shell
-# Create a virtual environment and activate it
-$ python3 -m venv ./venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
-```
+* MacOSX/Linux
+
+  ```shell
+  # Create a virtual environment and activate it
+  $ python3 -m venv venv
+  $ source venv/bin/activate
+  $ pip install -r requirements.txt
+  ```
+
+* Windows
+
+  ```shell
+  # Create a virtual environment and activate it
+  python -m venv venv
+  venv\Scripts\activate
+  (venv) pip install -r requirements.txt
+  ```
 
 ### Prepare your schema and play with it
 
@@ -27,15 +38,16 @@ $ python manage.py shell_plus --notebook
 
 ### Create a super user for your application
 ```shell
-$ python manage.py 
-
+$ python manage.py createsuperuser
 ```
 
 ### Run dev server
 
 ```shell
-./manage.py runserver createsuperuser
+$ python manage.py runserver
 ```
+
+Go to [http://localhost:8000](http://localhost:8000)
 
 ### Run production server
 
