@@ -1,32 +1,3 @@
-$.ajax({
-    url:  '/reservations',
-    type:  'get',
-    dataType:  'json',
-    success: function  (data) {
-        if (data.ret == 0) {
-                console.log(data.reservations);
-            // let rows =  '';
-            // data.customers.forEach(customer => {
-            //     rows += `<tr id="tr_${customer.id}">
-            //             <td class="col-1">${customer.first_name} ${customer.last_name}</td>
-            //             <td class="col-3">${customer.gender}</td>
-            //             <td class="col-1">${customer.email}</td>
-            //             <td class="col-1">${customer.tel}</td>
-            //             <td class="col-3">
-            //                 <button class="btn deleteBtn btn-primary" data-id="${customer.id}"">Delete</button>
-            //                 <button class="btn updateBtn btn-primary" data-id="${customer.id}"">Update</button>
-            //             </td>
-            //         </tr>`;
-            // });
-            //
-            // $('#myTable tbody').append(rows);
-            // bindBtn();
-        } else {
-            // do something
-        }
-    }
-});
-
 var calendar = $("#calendar").calendar({
     tmpl_path: "/reservation/calendar/",
     view: 'month',
@@ -44,6 +15,51 @@ var calendar = $("#calendar").calendar({
     time_start: '08:00',
     time_end: '20:00',
     events_url: '/reservation/new'
+});
+
+$.ajax({
+    url:  '/reservations',
+    type:  'get',
+    dataType:  'json',
+    success: function  (data) {
+        if (data.ret == 0) {
+            console.log(data.reservations);
+            var event_sources = []
+            data.reservations.forEach(reservation => {
+                event_sources.push({
+                    "id": reservation.id,
+                    "title": reservation.reservation_time_b + ' ' + reservation.customer.first_name + ' ' + reservation.customer.last_name + " - "
+                        + reservation.reservation_service.name,
+                    "url": '/reservation/' + reservation.id,
+                    "start": reservation.reservation_date_time_ms_b,
+                    "end": reservation.reservation_date_time_ms_e
+                })
+            });
+
+            console.log(event_sources);
+
+            calendar = $("#calendar").calendar({
+                tmpl_path: "/reservation/calendar/",
+                view: 'month',
+                events_source: function () { return event_sources; },
+                onAfterViewLoad: function(view) {
+                    $('.page-header h3').text(this.getTitle());
+                    $('.btn-group button').removeClass('active');
+                    $('button[data-calendar-view="' + view + '"]').addClass('active');
+                },
+                classes: {
+                    months: {
+                        general: 'label'
+                    }
+                },
+                time_start: '08:00',
+                time_end: '20:00',
+                events_url: '/reservation/new'
+            })
+        } else {
+            // do something
+        }
+    }
 });
 
 $('.btn-group button[data-calendar-nav]').each(function() {
