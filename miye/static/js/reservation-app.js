@@ -12,6 +12,7 @@ var calendar = $("#calendar").calendar({
             general: 'label'
         }
     },
+    show_events_which_fits_time: true,
     time_start: '08:00',
     time_end: '20:00',
     events_url: '/reservation/new'
@@ -52,6 +53,7 @@ $.ajax({
                         general: 'label'
                     }
                 },
+                show_events_which_fits_time: true,
                 time_start: '08:00',
                 time_end: '20:00',
                 events_url: '/reservation/new'
