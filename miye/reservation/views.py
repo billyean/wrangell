@@ -88,7 +88,7 @@ def dumpJson(reservation_obj):
     print(reservation_obj)
     customer= reservation_obj.customer
     service = reservation_obj.reservation_service
-    reservation_date_time = reservation_obj.reservation_date_time
+    reservation_date_time = reservation_obj.reservation_date_time + datetime.timedelta(hours=8)
     reservation_length = reservation_obj.reservation_length
 
     return {
