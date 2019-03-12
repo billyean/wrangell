@@ -5169,6 +5169,9 @@ a.thumbnail.active {
   background-color: #f2dede;
   border-color: #ebccd1;
 }
+.alert-danger:empty {
+  visibility: hidden;
+}
 .alert-danger hr {
   border-top-color: #e4b9c0;
 }

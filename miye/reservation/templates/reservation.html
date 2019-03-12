@@ -37,9 +37,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="hidden" data-error=""></div>
+      <div id="errorDiv" class="alert alert-danger"></div>
       <div class="modal-body">
-        <label id="selectTime" ></label>
+        <label id="selectTime"></label>
         <p>
           <label for="serviceSelect">Please select service to be reserved:</label>
           <select class="form-control" id="serviceSelect"></select>
@@ -55,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button id="btnNewReservation" type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

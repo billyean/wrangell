@@ -721,6 +721,13 @@ if(!String.prototype.formatNum) {
 		return this.options.templates['month-day'](t);
 	}
 
+	Calendar.prototype._getCurrentDate = function() {
+		let current = this.options.position.start;
+		let date_str = current.getFullYear() + "-" + (current.getMonth() + 1) + "-" + current.getDate()
+		console.log("current date " + date_str);
+		return date_str;
+	};
+
 	Calendar.prototype._getHoliday = function(date) {
 		var result = false;
 		$.each(getHolidays(this, date.getFullYear()), function() {
@@ -1037,11 +1044,14 @@ if(!String.prototype.formatNum) {
 			var view = $(this).data('cal-view');
 			self.options.day = $(this).data('cal-date');
 			self.view(view);
+			console.log(self.options.day)
 		});
 		$('.cal-cell').dblclick(function() {
 			var view = $('[data-cal-date]', this).data('cal-view');
 			self.options.day = $('[data-cal-date]', this).data('cal-date');
 			self.view(view);
+			console.log(view)
+			console.log(self.options.day)
 		});
 
 		$('.cal-day-hour-part').each(function(){
@@ -1049,7 +1059,7 @@ if(!String.prototype.formatNum) {
             $this.click(function() {
             	console.log($(this))
             	$('#newEventModal').modal('toggle');
-				$('#selectTime').html($(this).data('cal-date') + " " + $(this).data('time'));
+				$('#selectTime').html($(this).data('date') + " " + $(this).data('time'));
             });
         });
 
