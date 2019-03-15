@@ -18,6 +18,7 @@ from django.urls import path, re_path
 from administration import views as administration_views
 from reservation import views as reservation_views
 from accounts import views as accounts_views
+from report import views as report_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
@@ -43,7 +44,8 @@ urlpatterns = [
     path('reservation/calendar/week.html', reservation_views.WeekHtml.as_view()),
     path('reservation/calendar/week-days.html', reservation_views.WeekDaysHtml.as_view()),
     path('reservation/calendar/year.html', reservation_views.YearHtml.as_view()),
-    path('reservation/calendar/year-month.html', reservation_views.YearMonthHtml.as_view())
+    path('reservation/calendar/year-month.html', reservation_views.YearMonthHtml.as_view()),
+    path('billing', report_views.billing, name='billing_main'),
 ]
 
 

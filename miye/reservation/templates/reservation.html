@@ -1,5 +1,9 @@
-{% extends 'reservation_base.html' %}
+{% extends 'base.html' %}
 {% load static %}
+{% block extracss %}<link rel="stylesheet" href="{% static 'css/calendar.css' %}" crossorigin="anonymous">{% endblock %}
+
+{% block title %} Reservation {% endblock %}
+
 {% block main %}
 
 <div class="container">
@@ -65,5 +69,7 @@
 {% endblock %}
 
 {% block extrajs %}
+<script src="{% static 'js/underscore-min.js' %}"></script>
+<script src="{% static 'js/calendar.js' %}"></script>
 <script  src="{% static 'js/reservation-app.js' %}"></script>
 {% endblock %}
