@@ -1059,7 +1059,8 @@ if(!String.prototype.formatNum) {
             $this.click(function() {
             	console.log($(this))
             	$('#newEventModal').modal('toggle');
-				$('#selectTime').html($(this).data('date') + " " + $(this).data('time'));
+            	$('#selectDate').html($(this).data('date'));
+				$('#selectTime').html($(this).data('time'));
             });
         });
 

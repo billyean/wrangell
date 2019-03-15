@@ -185,7 +185,7 @@ $('#newEventModal').on('show.bs.modal', function (event) {
 })
 
 function createReservation() {
-    console.log("call createReservation");
+    let reservation_date = $('#selectDate').text();
     let reservation_time = $('#selectTime').text();
     let service_id = $('#serviceSelect').val() ;
     let reservation_length = $('#spanSelect').val() ;
@@ -196,6 +196,7 @@ function createReservation() {
     url:  '/reservation/new',
     type:  'post',
     data: {
+        'reservation_date': reservation_date,
         'reservation_time': reservation_time,
         'service_id': service_id,
         'reservation_length': reservation_length,

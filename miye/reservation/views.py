@@ -60,7 +60,7 @@ def reservations(request):
     data = dict()
     try:
         if request.method == 'GET':
-            valid_reservations = Reservation.objects.filter(start_datetime__gte=datetime.datetime.now())
+            valid_reservations = Reservation.objects.filter(date__gte=datetime.datetime.now().date())
             data['reservations'] = [dumpJson(r) for r in valid_reservations]
         else:
             customer = Customer.objects.filter(id == request.POST['customer_id'])
@@ -89,12 +89,13 @@ def new_reservation(request):
             customer = Customer.objects.get(id=request.POST['customer_id'])
             reservation_service = Service.objects.get(id=request.POST['service_id'])
             reservation_length = int(request.POST['reservation_length'])
-            start_datetime = datetime.datetime.strptime(request.POST['reservation_time'], '%Y-%m-%d %H:%M')
-            print(reservation_length)
-            end_datetime = start_datetime + datetime.timedelta(minutes=reservation_length)
+            date = datetime.date.strptime(request.POST['reservation_date'], '%Y-%m-%d')
+            start_time = datetime.time.strptime(request.POST['reservation_time'], '%H:%M')
+            end_time = start_time + datetime.timedelta(minutes=reservation_length)
             reservation_obj = Reservation(customer=customer,
-                                          start_datetime=start_datetime,
-                                          end_datetime=end_datetime,
+                                          date=date,
+                                          start_time=start_time,
+                                          end_time=end_time,
                                           reservation_service=reservation_service)
             reservation_obj.save()
 
@@ -110,8 +111,12 @@ def dumpJson(reservation_obj):
     print(reservation_obj)
     customer = reservation_obj.customer
     service = reservation_obj.reservation_service
-    start_datetime = reservation_obj.start_datetime + datetime.timedelta(hours=8)
-    end_datetime = reservation_obj.end_datetime + datetime.timedelta(hours=8)
+    date = reservation_obj.date
+    start_time = reservation_obj.start_time
+    end_time = reservation_obj.end_time
+
+    start_datetime = datetime.datetime.combine(date, start_time) + datetime.timedelta(hours=8)
+    end_datetime = datetime.datetime.combine(date, end_time) + datetime.timedelta(hours=8)
 
     return {
             'id': reservation_obj.id,
@@ -120,12 +125,12 @@ def dumpJson(reservation_obj):
                 'first_name': customer.first_name,
                 'last_name': customer.last_name
             },
-            'datetime_start': start_datetime,
-            'start_date': start_datetime.date(),
-            'start_time': start_datetime.time().strftime('%H:%M'),
-            'end_datetime': end_datetime,
-            'end_date': end_datetime.date(),
-            'end_time': end_datetime.time().strftime('%H:%M'),
+            # 'datetime_start': start_datetime,
+            # 'start_date': start_datetime.date(),
+            # 'start_time': start_datetime.time().strftime('%H:%M'),
+            # 'end_datetime': end_datetime,
+            # 'end_date': end_datetime.date(),
+            # 'end_time': end_datetime.time().strftime('%H:%M'),
             'datetime_start_ms': start_datetime.strftime('%s') + '000',
             'datetime_end_ms': end_datetime.strftime('%s') + '000',
             'reservation_service': {
