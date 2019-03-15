@@ -1044,20 +1044,16 @@ if(!String.prototype.formatNum) {
 			var view = $(this).data('cal-view');
 			self.options.day = $(this).data('cal-date');
 			self.view(view);
-			console.log(self.options.day)
 		});
 		$('.cal-cell').dblclick(function() {
 			var view = $('[data-cal-date]', this).data('cal-view');
 			self.options.day = $('[data-cal-date]', this).data('cal-date');
 			self.view(view);
-			console.log(view)
-			console.log(self.options.day)
 		});
 
 		$('.cal-day-hour-part').each(function(){
             var $this = $(this);
             $this.click(function() {
-            	console.log($(this))
             	$('#newEventModal').modal('toggle');
             	$('#selectDate').html($(this).data('date'));
 				$('#selectTime').html($(this).data('time'));

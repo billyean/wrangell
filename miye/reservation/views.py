@@ -89,17 +89,20 @@ def new_reservation(request):
             customer = Customer.objects.get(id=request.POST['customer_id'])
             reservation_service = Service.objects.get(id=request.POST['service_id'])
             reservation_length = int(request.POST['reservation_length'])
-            date = datetime.date.strptime(request.POST['reservation_date'], '%Y-%m-%d')
-            start_time = datetime.time.strptime(request.POST['reservation_time'], '%H:%M')
-            end_time = start_time + datetime.timedelta(minutes=reservation_length)
+            start_datetime = datetime.datetime.strptime(request.POST['reservation_date'] + ' '
+                                                        + request.POST['reservation_time']
+                                                        , '%Y-%m-%d %H:%M')
+            end_datetime = start_datetime + datetime.timedelta(minutes=reservation_length)
+
+            date = start_datetime.date()
+            start_time = start_datetime.time()
+            end_time = end_datetime.time()
             reservation_obj = Reservation(customer=customer,
                                           date=date,
                                           start_time=start_time,
                                           end_time=end_time,
                                           reservation_service=reservation_service)
             reservation_obj.save()
-
-            # data['service'] = dumpJson(reservation_obj)
         data['ret'] = 0
     except ValidationError as e:
         data['ret'] = 1
@@ -125,12 +128,6 @@ def dumpJson(reservation_obj):
                 'first_name': customer.first_name,
                 'last_name': customer.last_name
             },
-            # 'datetime_start': start_datetime,
-            # 'start_date': start_datetime.date(),
-            # 'start_time': start_datetime.time().strftime('%H:%M'),
-            # 'end_datetime': end_datetime,
-            # 'end_date': end_datetime.date(),
-            # 'end_time': end_datetime.time().strftime('%H:%M'),
             'datetime_start_ms': start_datetime.strftime('%s') + '000',
             'datetime_end_ms': end_datetime.strftime('%s') + '000',
             'reservation_service': {

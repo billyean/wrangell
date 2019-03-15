@@ -190,7 +190,7 @@ function createReservation() {
     let service_id = $('#serviceSelect').val() ;
     let reservation_length = $('#spanSelect').val() ;
     let customer_id = $('#customerSelect').val() ;
-
+    console.log(reservation_date);
     console.log(reservation_time);
     $.ajax({
     url:  '/reservation/new',
