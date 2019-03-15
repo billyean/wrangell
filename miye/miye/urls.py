@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.views.generic import TemplateView
+
 from administration import views as administration_views
 from reservation import views as reservation_views
 from accounts import views as accounts_views
@@ -46,6 +48,7 @@ urlpatterns = [
     path('reservation/calendar/year.html', reservation_views.YearHtml.as_view()),
     path('reservation/calendar/year-month.html', reservation_views.YearMonthHtml.as_view()),
     path('billing', report_views.billing, name='billing_main'),
+    path('home', TemplateView.as_view(template_name='home.html'))
 ]
 
 
