@@ -6,7 +6,6 @@ from django.views.generic.base import TemplateView
 from reservation.models import Reservation
 from administration.models import Customer
 from administration.models import Service
-from reservation.validators import (validate_self, validate_other)
 import datetime
 
 
@@ -122,8 +121,8 @@ def dumpJson(reservation_obj):
     start_time = reservation_obj.start_time
     end_time = reservation_obj.end_time
 
-    start_datetime = datetime.datetime.combine(date, start_time) + datetime.timedelta(hours=8)
-    end_datetime = datetime.datetime.combine(date, end_time) + datetime.timedelta(hours=8)
+    start_datetime = datetime.datetime.combine(date, start_time) + datetime.timedelta(hours=7)
+    end_datetime = datetime.datetime.combine(date, end_time) + datetime.timedelta(hours=7)
 
     return {
             'id': reservation_obj.id,
@@ -144,4 +143,27 @@ def dumpJson(reservation_obj):
     }
 
 
+def validate_self(validating):
+    left = Reservation.objects.filter(customer=validating.customer).filter(date=validating.date).filter(
+        start_time__lte=validating.start_time).filter(end_time__gt=validating.start_time)
+    right = Reservation.objects.filter(customer=validating.customer).filter(date=validating.date).filter(
+        start_time__lt=validating.end_time).filter(end_time__gte=validating.start_time)
+
+    if left.count() + right.count() > 0:
+        raise ValidationError(f"Multiple reservation at the same time is not allowed.")
+
+
+def validate_other(validating):
+    limit = validating.reservation_service.limit
+
+    check_date_time = datetime.datetime.combine(validating.date, validating.start_time)
+    check_end_time = datetime.datetime.combine(validating.date, validating.end_time)
+
+    while check_date_time < check_end_time:
+        check_time = check_date_time.time()
+        overlap = Reservation.objects.filter(reservation_service=validating.reservation_service).filter(
+            date=validating.date).filter(start_time__lte=check_time).filter(end_time__gt=check_time)
+        if overlap.count() >= limit:
+            raise ValidationError(f"Reservation numbers at the {check_time} is beyond limit {limit}.")
+        check_date_time += datetime.timedelta(minutes=30)
 
