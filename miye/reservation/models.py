@@ -5,20 +5,17 @@ from django.db.models import (
     DateField,
     TimeField,
 )
-import datetime
+from reservation.validators import (validate_start_time, validate_end_time)
 
 
 # Create your models here.
 class Reservation(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     date = DateField()
-    start_time = TimeField()
-    end_time = TimeField()
+    start_time = TimeField(validators=[validate_start_time])
+    end_time = TimeField(validators=[validate_end_time])
     reservation_service = models.ForeignKey(Service, on_delete=models.CASCADE)
 
     objects = models.Manager()
 
-    # def clean(self):
-    #     self.objects.filter(reservation_date_time__lte=self.reservation_date_time)\
-    #         .filter(reservation_date_time__gt=self.reservation_date_time)
 

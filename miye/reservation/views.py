@@ -6,6 +6,7 @@ from django.views.generic.base import TemplateView
 from reservation.models import Reservation
 from administration.models import Customer
 from administration.models import Service
+from reservation.validators import (validate_self, validate_other)
 import datetime
 
 
@@ -102,6 +103,9 @@ def new_reservation(request):
                                           start_time=start_time,
                                           end_time=end_time,
                                           reservation_service=reservation_service)
+            reservation_obj.full_clean()
+            validate_self(reservation_obj)
+            validate_other(reservation_obj)
             reservation_obj.save()
         data['ret'] = 0
     except ValidationError as e:
@@ -138,3 +142,6 @@ def dumpJson(reservation_obj):
                 'rate': service.rate
             }
     }
+
+
+
