@@ -724,7 +724,6 @@ if(!String.prototype.formatNum) {
 	Calendar.prototype._getCurrentDate = function() {
 		let current = this.options.position.start;
 		let date_str = current.getFullYear() + "-" + (current.getMonth() + 1) + "-" + current.getDate()
-		console.log("current date " + date_str);
 		return date_str;
 	};
 
