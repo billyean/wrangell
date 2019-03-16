@@ -113,6 +113,20 @@ def new_reservation(request):
     return JsonResponse(data)
 
 
+@login_required
+def delete_reservation(request):
+    data = dict()
+    try:
+        if request.method == 'POST':
+            reservation_obj = Reservation.objects.get(id=request.POST['id'])
+            reservation_obj.delete()
+        data['ret'] = 0
+    except ValidationError as e:
+        data['ret'] = 1
+        data['message'] = str(e)
+    return JsonResponse(data)
+
+
 def dumpJson(reservation_obj):
     print(reservation_obj)
     customer = reservation_obj.customer
