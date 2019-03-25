@@ -174,6 +174,7 @@ $('#newEventModal').on('show.bs.modal', function (event) {
     })
 
     $('#btnNewReservation').on("click", (e) => {
+        e.stopImmediatePropagation();
         createReservation();
     });
   // var button = $(event.relatedTarget) // Button that triggered the modal
@@ -202,7 +203,7 @@ function createReservation() {
         'customer_id': customer_id
     },
     dataType:  'json',
-        success: function  (data) {
+        success: function (data) {
             if (data.ret == 0) {
                 $('#newEventModal').modal('hide');
                 getEvents();
@@ -223,10 +224,13 @@ function deleteReservation(id) {
         'id': id,
     },
     dataType:  'json',
-        success: function  (data) {
+        success: function (data) {
+        console.log(data);
             if (data.ret == 0) {
                 getEvents();
+
             } else {
+                let errorMsg = `${data.message}`
             }
         }
     })
