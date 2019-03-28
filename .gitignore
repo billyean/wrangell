@@ -8,3 +8,13 @@
 **/.ipynb_checkpoints
 **/migrations/
 !**/migrations/__init__.py
+*/.bundle
+*/db/*.sqlite3
+*/db/*.sqlite3-journal
+*/log/*
+*/tmp/*
+*/storage/*
+*/.byebug_history
+*/config/master.key
+*/public/assets
+**/.keep
