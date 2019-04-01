@@ -228,7 +228,6 @@ function deleteReservation(id) {
         console.log(data);
             if (data.ret == 0) {
                 getEvents();
-
             } else {
                 let errorMsg = `${data.message}`
             }
