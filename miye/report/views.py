@@ -37,7 +37,7 @@ def billing_summary(request):
             data["end"] = end
             data["total"] = total
             data['reservations'] = [dumpJson(r) for r in unpaid_reservations]
-            data['unpaid_reservations'] = [dumpJson(r) for r in cancelled_reservations]
+            data['cancelled_reservations'] = [dumpJson(r) for r in cancelled_reservations]
         data['ret'] = 0
     except ValidationError as e:
         data['ret'] = 1
