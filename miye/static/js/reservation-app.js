@@ -225,7 +225,7 @@ function deleteReservation(id) {
     },
     dataType:  'json',
         success: function (data) {
-        console.log(data);
+
             if (data.ret == 0) {
                 getEvents();
             } else {
