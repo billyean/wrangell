@@ -30,7 +30,6 @@ function get_billing() {
         },
         dataType:  'json',
         success: function  (data) {
-            console.log(data.ret);
             if (data.ret == 0) {
                 $('#billDiv').empty();
                 let summary = `<h2 class="col-sm-12">Billing Summary</h2>
