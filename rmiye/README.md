@@ -13,6 +13,12 @@ rails webpacker:install
 rails server
 ```
 
+# Create a controller
+
+```shell
+rails generate controller
+```
+
 # Configuration
 
 * Ruby version - ruby-2.6.2
