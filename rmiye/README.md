@@ -1,11 +1,21 @@
-# README
+# How to create a project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```shell
+rails new testproject[rmiye]
+cd testproject[rmiye]
+rails db:migrate
+rails webpacker:install
+```
 
-Things you may want to cover:
+# Start your server
 
-* Ruby version
+```shell
+rails server
+```
+
+# Configuration
+
+* Ruby version - ruby-2.6.2
 
 * System dependencies
 
@@ -21,4 +31,3 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
