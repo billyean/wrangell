@@ -13,3 +13,7 @@ The following guides illustrate how to use some features concretely:
 * [Accessing MongoDB Data with REST](https://spring.io/guides/gs/accessing-mongodb-data-rest/)
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
+### Enable h2-console
+
+add ```spring.h2.console.enabled=true``` into src/main/resources/application.properties and restart server, go [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+
