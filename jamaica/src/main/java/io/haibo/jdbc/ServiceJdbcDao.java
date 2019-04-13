@@ -16,4 +16,10 @@ public class ServiceJdbcDao {
     public List<Service> findAll() {
         return jdbcTemplate.query("SELECT * FROM service", new BeanPropertyRowMapper<Service>(Service.class));
     }
+
+    public Service findById(Integer id) {
+        return jdbcTemplate.queryForObject("SELECT * FROM service Where id = ?",
+                new Object[]{id},
+                new BeanPropertyRowMapper<Service>(Service.class));
+    }
 }

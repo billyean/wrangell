@@ -29,9 +29,10 @@ public class JamaicaApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        for (Service service :  jdbcDao.findAll()){
-            logger.info("service : {} ", service);
-        }
+//        for (Service service :  jdbcDao.findAll()){
+//            logger.info("service : {} ", service);
+//        }
 
+        logger.info("service : {} ",  jdbcDao.findById(2));
     }
 }
