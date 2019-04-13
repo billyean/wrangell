@@ -34,5 +34,7 @@ public class JamaicaApp implements CommandLineRunner {
 //        }
 
         logger.info("service : {} ",  jdbcDao.findById(2));
+        logger.info("delete {} row ",  jdbcDao.deleteById(2));
+
     }
 }

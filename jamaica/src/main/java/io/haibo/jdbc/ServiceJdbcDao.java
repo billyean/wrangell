@@ -22,4 +22,8 @@ public class ServiceJdbcDao {
                 new Object[]{id},
                 new BeanPropertyRowMapper<Service>(Service.class));
     }
+
+    public int deleteById(Integer id) {
+        return jdbcTemplate.update("DELETE FROM service WHERE id = ?", new Object[]{id});
+    }
 }
