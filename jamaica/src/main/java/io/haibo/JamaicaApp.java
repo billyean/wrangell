@@ -1,5 +1,11 @@
 package io.haibo;
 
+import io.haibo.jdbc.ServiceJdbcDao;
+import io.haibo.model.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +13,25 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.List;
+
 @SpringBootApplication
 @EnableJpaRepositories
-public class JamaicaApp {
+public class JamaicaApp implements CommandLineRunner {
+    private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
+    @Autowired
+    ServiceJdbcDao jdbcDao;
+
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(JamaicaApp.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        for (Service service :  jdbcDao.findAll()){
+            logger.info("service name: {} ", service.getName());
+        }
+
     }
 }

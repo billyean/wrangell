@@ -12,13 +12,13 @@ import java.util.List;
 public class ServiceController {
     @GetMapping(value = "/service/{id}")
     public Service getServiceById(@PathVariable("id") int id) {
-        return new Service(1, "Test", "Test", Arrays.asList(30, 60), 2.0, 1);
+        return new Service(1, "Test", "Test", "30, 60", 2.0, 1);
     }
 
     @GetMapping(value = "/services")
     public List<Service> getServices() {
         return Arrays.asList(
-                new Service(1, "Test", "Test", Arrays.asList(30, 60), 2.0, 1)
+                new Service(1, "Test", "Test", "30, 60", 2.0, 1)
         );
     }
 }

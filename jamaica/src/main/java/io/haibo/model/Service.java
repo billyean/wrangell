@@ -9,22 +9,22 @@ public class Service {
 
     private String description;
 
-    private List<Integer> timeTypes;
+    private String timeTypes;
 
     private double rate;
 
-    private int limit;
+    private int limits;
 
-    public Service(int id, String name, String description, List<Integer> timeTypes, double rate, int limit) {
+    public Service() {}
+
+    public Service(int id, String name, String description, String timeTypes, double rate, int limits) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.timeTypes = timeTypes;
         this.rate = rate;
-        this.limit = limit;
+        this.limits = limits;
     }
-
-
 
     public int getId() {
         return id;
@@ -50,11 +50,11 @@ public class Service {
         this.description = description;
     }
 
-    public List<Integer> getTimeTypes() {
+    public String getTimeTypes() {
         return timeTypes;
     }
 
-    public void setTimeTypes(List<Integer> timeTypes) {
+    public void setTimeTypes(String timeTypes) {
         this.timeTypes = timeTypes;
     }
 
@@ -66,11 +66,11 @@ public class Service {
         this.rate = rate;
     }
 
-    public int getLimit() {
-        return limit;
+    public int getLimits() {
+        return limits;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public void setLimits(int limits) {
+        this.limits = limits;
     }
 }
