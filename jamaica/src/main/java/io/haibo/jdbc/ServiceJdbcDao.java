@@ -26,4 +26,10 @@ public class ServiceJdbcDao {
     public int deleteById(Integer id) {
         return jdbcTemplate.update("DELETE FROM service WHERE id = ?", new Object[]{id});
     }
+
+    public int insert(Service service) {
+        return jdbcTemplate.update("INSERT INTO service(id, name, description, timeTypes, rate, limits) VALUES(?, ?, ?, ?, ?, ?)",
+                new Object[]{service.getId(), service.getName(), service.getDescription(),
+                            service.getTimeTypes(), service.getRate(), service.getLimits()});
+    }
 }
