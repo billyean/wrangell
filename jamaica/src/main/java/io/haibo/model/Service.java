@@ -73,4 +73,10 @@ public class Service {
     public void setLimits(int limits) {
         this.limits = limits;
     }
+
+    @Override
+    public String toString() {
+        return String.format("name : %s\tdescrption : %s\ttime_type : %s\trate : %4.2f\tlimits: %d",
+                this.name, this.description, this.timeTypes, this.rate, this.limits);
+    }
 }

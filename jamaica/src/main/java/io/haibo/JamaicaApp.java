@@ -30,7 +30,7 @@ public class JamaicaApp implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         for (Service service :  jdbcDao.findAll()){
-            logger.info("service name: {} ", service.getName());
+            logger.info("service : {} ", service);
         }
 
     }
