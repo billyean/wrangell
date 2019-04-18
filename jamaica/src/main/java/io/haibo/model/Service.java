@@ -1,8 +1,13 @@
 package io.haibo.model;
 
-import java.util.List;
+import javax.annotation.Generated;
+import javax.persistence.*;
 
+@Entity
+@Table(name="service")
 public class Service {
+    @Id
+    @GeneratedValue
     private int id;
 
     private String name;
@@ -16,6 +21,14 @@ public class Service {
     private int limits;
 
     public Service() {}
+
+    public Service(String name, String description, String timeTypes, double rate, int limits) {
+        this.name = name;
+        this.description = description;
+        this.timeTypes = timeTypes;
+        this.rate = rate;
+        this.limits = limits;
+    }
 
     public Service(int id, String name, String description, String timeTypes, double rate, int limits) {
         this.id = id;
