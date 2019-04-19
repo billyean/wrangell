@@ -40,5 +40,7 @@ public class JamaicaApp implements CommandLineRunner {
         Service created = repository.create(newService);
         LOGGER.info("service : {} ", repository.findById(newService.getId()));
         repository.delete(created.getId());
+
+        LOGGER.info("service : {} ", repository.findByName("Facial services"));
     }
 }

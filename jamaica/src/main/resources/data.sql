@@ -1,5 +1,5 @@
 CREATE TABLE service (
-id          integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+id          integer AUTO_INCREMENT PRIMARY KEY,
 name        varchar(255),
 description varchar(255),
 min         int,
