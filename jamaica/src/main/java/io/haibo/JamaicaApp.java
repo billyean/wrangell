@@ -1,5 +1,6 @@
 package io.haibo;
 
+import io.haibo.model.Service;
 import io.haibo.repositories.ServiceJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,5 +36,9 @@ public class JamaicaApp implements CommandLineRunner {
 //        logger.info("delete {} row ",  jdbcDao.deleteById(2));
         LOGGER.info("service : {} ", repository.findById(1));
 
+        Service newService = new Service("Test1", "Test2", 0, 90, 2.0, 1);
+        Service created = repository.create(newService);
+        LOGGER.info("service : {} ", repository.findById(newService.getId()));
+        repository.delete(created.getId());
     }
 }
