@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name="Service.getByName", query="select s from Service s where s.name = :name"),
+    @NamedQuery(name="Service.getAll", query="select * from Service s"),
 })
 @Table(name="service")
 public class Service {

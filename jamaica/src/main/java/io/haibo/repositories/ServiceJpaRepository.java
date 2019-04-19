@@ -4,10 +4,10 @@ import io.haibo.model.Service;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class ServiceJpaRepository {
@@ -22,6 +22,11 @@ public class ServiceJpaRepository {
         TypedQuery<Service> query = em.createNamedQuery("Service.getByName", Service.class);
         query.setParameter("name", name);
         return query.getSingleResult();
+    }
+
+    public List<Service> getAll() {
+        TypedQuery<Service> query = em.createNamedQuery("Service.getAll", Service.class);
+        return query.getResultList();
     }
 
     @Transactional
