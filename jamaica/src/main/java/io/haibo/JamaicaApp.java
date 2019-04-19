@@ -1,16 +1,13 @@
 package io.haibo;
 
-import io.haibo.jdbc.ServiceJdbcDao;
-import io.haibo.model.Service;
+import io.haibo.repositories.ServiceJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
@@ -18,10 +15,11 @@ import java.util.List;
 @SpringBootApplication
 @EnableJpaRepositories
 public class JamaicaApp implements CommandLineRunner {
-    private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
-    ServiceJdbcDao jdbcDao;
+    ServiceJpaRepository repository;
+//    ServiceJdbcDao jdbcDao;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(JamaicaApp.class, args);
@@ -33,8 +31,9 @@ public class JamaicaApp implements CommandLineRunner {
 //            logger.info("service : {} ", service);
 //        }
 
-        logger.info("service : {} ",  jdbcDao.findById(2));
-        logger.info("delete {} row ",  jdbcDao.deleteById(2));
+//        logger.info("service : {} ",  jdbcDao.findById(2));
+//        logger.info("delete {} row ",  jdbcDao.deleteById(2));
+        LOGGER.info("service : {} ", repository.findById(1));
 
     }
 }

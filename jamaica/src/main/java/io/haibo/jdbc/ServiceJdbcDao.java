@@ -2,7 +2,6 @@ package io.haibo.jdbc;
 
 import io.haibo.model.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -24,7 +23,8 @@ public class ServiceJdbcDao {
             service.setId(resultSet.getInt("id"));
             service.setName(resultSet.getString("name"));
             service.setDescription("general");
-            service.setTimeTypes(resultSet.getString("timeTypes"));
+            service.setMin(resultSet.getInt("min"));
+            service.setMax(resultSet.getInt("max"));
             service.setRate(resultSet.getDouble("rate"));
             service.setLimits(resultSet.getInt("limits"));
             return service;
@@ -48,8 +48,8 @@ public class ServiceJdbcDao {
     }
 
     public int insert(Service service) {
-        return jdbcTemplate.update("INSERT INTO service(id, name, description, timeTypes, rate, limits) VALUES(?, ?, ?, ?, ?, ?)",
-                new Object[]{service.getId(), service.getName(), service.getDescription(),
-                            service.getTimeTypes(), service.getRate(), service.getLimits()});
+        return jdbcTemplate.update("INSERT INTO service(id, name, description, min, max, rate, limits) VALUES(?, ?, ?, ?, ?, ?)",
+                new Object[]{service.getId(), service.getName(), service.getDescription(), service.getMin(),
+                            service.getMax(), service.getRate(), service.getLimits()});
     }
 }
