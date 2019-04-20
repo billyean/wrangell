@@ -8,12 +8,12 @@ $.ajax({
             data.services.forEach(service => {
                 rows += `<tr id="tr_${service.id}">
                         <td class="col-1">${service.name}</td>
-                        <td class="col-2">${service.description}</td>
-                        <td class="col-2">${service.min_service_time}</td>
-                        <td class="col-2">${service.max_service_time}</td>
+                        <td class="col-3">${service.description}</td>
+                        <td class="col-1">${service.min_service_time}</td>
+                        <td class="col-1">${service.max_service_time}</td>
                         <td class="col-1"><span>&#36;</span>${service.rate}</td>
                         <td class="col-2">${service.limit}</td>
-                        <td class="col-2">
+                        <td class="col-3">
                             <button class="btn deleteBtn btn-primary" data-id="${service.id}">Delete</button>
                             <button class="btn updateBtn btn-primary" data-id="${service.id}">Update</button>
                         </td>
@@ -193,12 +193,12 @@ function ajaxUpdateService(service, elm) {
                 let updatedRowElement = $('#tr_' + service.id);
                 row = `<tr id="tr_${service.id}">
                     <td class="col-1">${service.name}</td>
-                    <td class="col-2">${service.description}</td>
-                    <td class="col-2">${service.min_service_time}</td>
-                    <td class="col-2">${service.max_service_time}</td>
+                    <td class="col-3">${service.description}</td>
+                    <td class="col-1">${service.min_service_time}</td>
+                    <td class="col-1">${service.max_service_time}</td>
                     <td class="col-1"><span>&#36;</span>${service.rate}</td>
                     <td class="col-2">${service.limit}</td>
-                    <td class="col-2">
+                    <td class="col-3">
                         <button class="btn deleteBtn btn-primary" data-id="${service.id}"">Delete</button>
                         <button class="btn updateBtn btn-primary" data-id="${service.id}"">Update</button>
                      </td>

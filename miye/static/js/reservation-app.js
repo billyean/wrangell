@@ -7,15 +7,6 @@ var options = {
         if(!events) {
             return;
         }
-        // let list = $('#eventlist');
-        // list.html('');
-        //
-        // $.each(events, function(key, val) {
-        //     $(document.createElement('li'))
-        //         // .html('<a href="' + val.url + '">' + val.title + '</a>')
-        //         .html('<span>' + val.title + '</span><button class="btn deleteBtn btn-primary" data-id="' + val.id + '">Delete</button>')
-        //         .appendTo(list);
-        // });
     },
     onAfterViewLoad: function(view) {
         $('.page-header h3').text(this.getTitle());
@@ -127,10 +118,13 @@ $('#newEventModal').on('show.bs.modal', function (event) {
         dataType:  'json',
         success: function  (data) {
             if (data.ret == 0) {
+                console.log(data.services)
                 let time_rows = {}
                 data.services.forEach(service => {
-                    let time = service.time_type.split(",")
-                    time_rows[service.id] = time
+                    const min = service.min_service_time
+                    const max = service.max_service_time
+                    const range = (max - min) / 15
+                    time_rows[service.id] = [...Array(range).keys()].map(x => x * 15 + min)
                 })
 
                 let rows = data.services.map(service => {

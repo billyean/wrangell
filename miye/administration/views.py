@@ -91,15 +91,7 @@ def service_detail(request, service_id):
         else:
             limit = service.limit
         data['ret'] = 0
-        data['service'] = {
-                'id': service.id,
-                'name': service.name,
-                'description': service.description,
-                'min_service_time': service.min_service_time,
-                'max_service_time': service.max_service_time,
-                'rate': service.rate,
-                'limit': limit
-            }
+        data['service'] = service2json(service)
         return JsonResponse(data)
     except ValidationError as e:
         data['ret'] = 1
