@@ -8,7 +8,7 @@ from django.db.models import (
     EmailField,
     AutoField
 )
-from administration.validators import validate_int15_list
+from administration.validators import validate_int15_multipler
 
 
 # Create your models here.
@@ -16,7 +16,9 @@ class Service(models.Model):
     id = AutoField
     name = CharField(max_length=255, unique=True)
     description = CharField(max_length=255)
-    time_type = CharField(max_length=255, validators=[validate_int15_list])
+    # time_type = CharField(max_length=255, validators=[validate_int15_list])
+    min_service_time = PositiveIntegerField(validators=[validate_int15_multipler])
+    max_service_time = PositiveIntegerField(validators=[validate_int15_multipler])
     rate = DecimalField(blank=False, null=False, decimal_places=2, max_digits=5, validators=[DecimalField])
     limit = PositiveIntegerField(blank=False, null=False, default=65535)
     create_time = DateTimeField(auto_now_add=True)
