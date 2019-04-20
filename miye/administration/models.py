@@ -25,7 +25,7 @@ class Service(models.Model):
     update_time = DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"name: {self.name}\n description: {self.description}\n time_type: {self.time_type} rate: {self.rate} limit: {self.limit}"
+        return f"name: {self.name}\n description: {self.description}\n  min_service_time: {self.min_service_time} max_service_time: {self.max_service_time}\n rate: {self.rate} limit: {self.limit}"
 
 
 class ActiveManager(models.Manager):
