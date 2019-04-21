@@ -28,8 +28,6 @@ $.ajax({
     }
 });
 
-$('th[data-toggle="tooltip"]').tooltip({placement: "bottom"});
-
 function bindBtn() {
     $('.deleteBtn').each((i, elm) => {
         $(elm).on("click",  (e) => {

@@ -22,7 +22,6 @@ var options = {
     time_start: '08:00',
     time_end: '20:00',
     time_split: '15',
-    format12: 'true',
     events_url: '/reservation/new'
 };
 
@@ -120,7 +119,6 @@ $('#newEventModal').on('show.bs.modal', function (event) {
         dataType:  'json',
         success: function  (data) {
             if (data.ret == 0) {
-                console.log(data.services)
                 let time_rows = {}
                 data.services.forEach(service => {
                     const min = service.min_service_time

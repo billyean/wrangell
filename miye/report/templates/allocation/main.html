@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block ptitle %}Billing{% endblock %}
-{% block title %}Billing Information{% endblock %}
+{% block ptitle %}Allocation{% endblock %}
+{% block title %}Personal Allocation{% endblock %}
 
 {% block main %}
     <p><span class="label label-primary" style="font-size: medium">Please Select start date and end date:</span></p>
     <div>
-        <div class="col-sm-6 row" style="padding-left: 40px; padding-right: 40px;">
-            <span class='col-sm-3 align-right' style="padding-left: 10px; padding-right: 10px;">Start Date : </span>
+        <div class="col-sm-6 row">
+            <span class='col-sm-3 align-right'>Start Date : </span>
             <span class='col-sm-9 align-center'><input type='text' class="form-control" id="form_startdate"></span>
 {#            <input type="text" id="form_startdate" class="datepicker forminput" data-date-format="mm/dd/yyyy">#}
         </div>
-        <div class="col-sm-6 row" style="padding-left: 40px; padding-right: 40px;">
-            <span class='col-sm-3 align-right' style="padding-left: 10px; padding-right: 10px;">End  Date : </span>
+        <div class="col-sm-6 row">
+            <span class='col-sm-3 align-right'>End  Date : </span>
             <span class='col-sm-9 align-center'><input type='text' class="form-control" id="form_enddate"></span>
 
 {#            <span class="label label-default" style="font-size: medium">End to : </span><input type="text" id="form_enddate" class="datepicker forminput" data-date-format="mm/dd/yyyy">#}
