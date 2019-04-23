@@ -32,11 +32,12 @@ function get_billing() {
         success: function  (data) {
             if (data.ret == 0) {
                 $('#billDiv').empty();
-                let summary = `<h2 class="col-sm-12">Billing Summary</h2>
+                let summary = `<div class="col-sm-12"><h2>Billing Summary</h2>
                     <p><span class="col-sm-6">Customer: ${data.customer_name}</span><span class="col-sm-6">Total Due: <span class="dollar">${data.total}</span></span></p>
                     <p><span class="col-sm-6">Start: ${data.start}</span><span class="col-sm-6">End: ${data.end}</span></p>
+                    </div>
                 `;
-                summary += `<table  class="table table-sm table-striped table-hover"  id="billingTable">
+                summary += `<div class="col-sm-12"><table  class="table table-sm table-striped table-hover"  id="billingTable">
                         <thead class="thead-dark">
                             <th class="col-2 text-left">Service</th>
                             <th class="col-2 text-left">Service Date</th>
@@ -56,7 +57,7 @@ function get_billing() {
                         <td>${reservation.amount}</td>
                         </tr>`;
                 });
-                summary += `</tbody></table>`;
+                summary += `</tbody></table></div>`;
                 $('#billDiv').append(summary);
 
                 let cancelled = `<h2 class="col-sm-12" style="margin-top: 10px;">Cancelled Reservations</h2>`;
