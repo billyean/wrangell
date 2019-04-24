@@ -32,7 +32,7 @@ function get_billing() {
         success: function  (data) {
             if (data.ret == 0) {
                 $('#billDiv').empty();
-                let summary = `<div class="col-sm-12"><h2>Billing Summary</h2>
+                let summary = `<div class="col-sm-12"><h2 class="text-center">Summary</h2>
                     <p><span class="col-sm-6">Customer: ${data.customer_name}</span><span class="col-sm-6">Total Due: <span class="dollar">${data.total}</span></span></p>
                     <p><span class="col-sm-6">Start: ${data.start}</span><span class="col-sm-6">End: ${data.end}</span></p>
                     </div>
