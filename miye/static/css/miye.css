@@ -48,7 +48,7 @@
 .available {
     display: inline-block;
     margin: 1px;
-    background-color: #d3d3d3;
+    background-color: #c3c3c3;
     min-width: 1.9%;
     height: 20px;
 }
@@ -72,7 +72,7 @@
 .available-block {
     display: inline-block;
     margin: 1px;
-    background-color: #d3d3d3;
+    background-color: #c3c3c3;
     min-width: 20px;
     height: 20px;
 }
