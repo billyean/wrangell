@@ -28,6 +28,7 @@ def django_db_setup(django_db_createdb, db):
                 max_service_time=60, rate=3.00, limit=1),
         Service(name='Facial services', description='normal or collagen', min_service_time=15, max_service_time=60,
                 rate=2.00, limit=1),
+
         Service(name='Specialty treatment services',
                 description='hot stone, sugar scrub, herbal body wrap, or botanical mud wrap', min_service_time=60,
                 max_service_time=90, rate=3.50, limit=1)
