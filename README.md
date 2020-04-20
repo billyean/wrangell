@@ -1,6 +1,7 @@
 # Web Application Album
 This is a repo that collects my web application.
 
+
 ## Applications
 The following web application has been implemented
 
