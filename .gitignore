@@ -1,8 +1,10 @@
 **/.idea
+**/.DS_Store
 */venv
 */.coverage
 */target
 */.mvn
+**/ .gradle
 **/*.pyc
 */__pycache__
 */db.sqlite3
