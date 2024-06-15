@@ -2,6 +2,8 @@
 - How to ask for input
 ```javascript
 // Ask to input the name
+prompt = require("prompt-sync")()
+
 let name = prompt('Enter your name here :');
 ```
 - Input is usually is string, think of how do you handle it before you need to do calculation.

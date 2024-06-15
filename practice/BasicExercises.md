@@ -1,5 +1,13 @@
 # Notes
+- Try to use simple print in Javascript.
+- Add meaningful comments if you have to explain.
+```javascript
+// single line comment
 
+/*
+  multiple line comments
+ */
+```
 # Exercises
 1. Write a program that prints "Hello World!" on the screen.
 2. Write a program that prints "Hello" on one line and "World!" on the bottom line, using two different commands.
