@@ -15,3 +15,4 @@ prompt = require("prompt-sync")()
 
 - [Basic Exercises](./BasicExercises.md)
 - [Mathematical Formulas](./MathematicalFormulas.md)
+- [Conditionals](./Conditionals.md)
