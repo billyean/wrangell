@@ -1,8 +1,17 @@
+# Notes
+- How to ask for input
+```javascript
+// Ask to input the name
+let name = prompt('Enter your name here :');
+```
+- Input is usually is string, think of how do you handle it before you need to do calculation.
+
+# Exercises
 1. Write a program that prompts the user for two numbers and displays the addition, subtraction, multiplication, and division between them.
 2. Write a program that calculates the arithmetic mean of two numbers entered by the user.
 3. Create a program that calculates and displays the arithmetic mean of three numbers entered by the user.
 4. Write a program that reads two numbers, the first being the base and the second the exponent, and then printing the first number raised to the second.
-5. Write a program that calculates the geometric mean of three numbers entered by the user.
+5. Write a program that calculates the geometric mean of three numbers entered by the user → ![geometric mean](./images/image_rsrc1ZR.jpg).
 6. Write a program that calculates the BMI of an individual, using the formula BMI = weight / height²
 7. Create a program that calculates and displays the perimeter of a circle, prompting the user for the radius, using the formula P = 2πr
 8. Write a program that calculates the area of a circle from the radius, using the formula A = πr²

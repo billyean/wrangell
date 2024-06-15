@@ -1,5 +1,6 @@
+# Notes
 
-
+# Exercises
 1. Write a program that prints "Hello World!" on the screen.
 2. Write a program that prints "Hello" on one line and "World!" on the bottom line, using two different commands.
 3. Write a program that prints "Hello" on one line and "World!" on the bottom line, using only one command to print.
