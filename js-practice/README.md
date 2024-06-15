@@ -23,12 +23,16 @@ Please name your homework with prefix following a sequence number. Eg Conditiona
 - [Loops](./Loops.md)
 - [Arrays](./Arrays.md)
 - [Strings](./Strings.md)
+- [Matrices](./Matrices.md)
+- [Recursive Functions](./Recursive.md)
+- [Regular Expressions](./RegularExpressions.md)
+- [Sorting](./Sorting.md)
 
 ## Status
 
-| Name     | Basic Exercises | Mathematical Formulas | Conditionals | Loops | Arrays | Strings |
-|----------| --------------- | --------------------- | ------------ | ----- | ------ | ------- |
-| Tina     | | | | | | |
-| Zachary  | | | | | | |
-| Ruby     | | | | | | |
+| Name     | Basic Exercises | Mathematical Formulas | Conditionals | Loops | Arrays | Strings | Matrices | Recursive Functions | Regular Expressions | Sorting |
+|----------| --------------- | --------------------- | ------------ | ----- | ------ | ------- | -------- | ------------------- | ------------------- | ------- |
+| Tina     | | | | | | | | | | |
+| Zachary  | | | | | | | | | | |
+| Ruby     | | | | | | | | | | |
 

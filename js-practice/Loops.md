@@ -17,7 +17,7 @@
 14. Write a program that prompts the user for a number N and displays all prime numbers less than N.
 15. Create a program that displays the first N prime numbers, where N is informed by the user, using a loop.
 16. Write a program that prompts the user for two numbers A and B and displays all numbers between A and B.
-17. ​​Write a program that reads numbers from the user until a negative number is entered, and prints the sum of the positive numbers.
+17. Write a program that reads numbers from the user until a negative number is entered, and prints the sum of the positive numbers.
 18. Write a program that asks the user for a number N and displays the sum of all numbers from 1 to N.
 19. Write a program that calculates and displays the sum of even numbers from 1 to 100 using a repeating loop.
 20. Write a program that prompts the user for a number and displays the Fibonacci sequence up to the given number using a repeating loop.

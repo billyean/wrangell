@@ -14,6 +14,10 @@
 10. Write a program that calculates the perimeter and area of a rectangle, using the formulas P = 2(w + l) and A = wl, where w is the width and l is the length.
 11. Write a program that calculates the perimeter and area of a triangle, using the formulas P = a + b + c and A = (b * h) / 2, where a, b and c are the sides of the triangle and h is the height relative to the side B.
 12. Write a program that calculates the average velocity of an object, using the formula v = Δs/Δt, where v is the average velocity, Δs is the space variation, and Δt is the time variation.
-13. Write a program that calculates the kinetic energy of a moving object, using the formula E = (mv²) / 2, where E is the kinetic energy, m is the mass of the object, and v is the velocity.
-14.  Write a program that calculates the work done by a force acting on an object, using the formula W = F * d, where W is the work, F is the applied force, and d is the distance traveled by the object.
-15. Write a program that calculates the n-th term of an arithmetic progression given the value of the first term, the common difference (ratio), and the value of n read from the user  → 
+13. Write a program that calculates the kinetic energy of a moving object, using the formula E = (mv²) / 2, where E is the kinetic energy, m is the mass of the object, and v is the velocity. 
+14. Write a program that calculates the work done by a force acting on an object, using the formula W = F * d, where W is the work, F is the applied force, and d is the distance traveled by the object.
+15. Write a program that calculates the n-th term of an arithmetic progression given the value of the first term, the common difference (ratio), and the value of n read from the user  → ![common difference](images/image_rsrc1ZS.jpg).
+16. Write a program that reads the x and y position of two points in the Cartesian plane, and calculates the distance between them.
+17. Create a program that prompts the user for the radius of a sphere and calculates and displays its volume.
+18. Make a program that reads the resistance of two resistors and displays the resulting resistance value when connected in series, adding the values, and in parallel using the formula (R1 * R2) / (R1 + R2).
+19. Make a program that reads a value of a product and the tax (in percentage), and calculates the final value of it.
