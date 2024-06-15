@@ -1,12 +1,5 @@
 # Notes
-- How to ask for input
-```javascript
-// Ask to input the name
-prompt = require("prompt-sync")()
-
-let name = prompt('Enter your name here :');
-```
-- Input is usually is string, think of how do you handle it before you need to do calculation.
+[Javascript math object reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
 
 # Exercises
 1. Write a program that prompts the user for two numbers and displays the addition, subtraction, multiplication, and division between them.
